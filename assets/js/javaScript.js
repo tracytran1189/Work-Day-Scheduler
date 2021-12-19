@@ -9,11 +9,11 @@ $(document).ready(function() {
 
 //Compare each time slot to current time 
 $(".row").each(function() {
-    var timeSlot = $(this).attr("id").split("-")[1];
+    var timeSlot = $(this).attr("id");
 
     if (currentHour == timeSlot) {
         $(this).addClass("present");
-        $(this).children(".description");
+        // $(this).children(".description");
 
     } else if (currentHour < timeSlot) {
         $(this).removeClass("present");
@@ -22,4 +22,12 @@ $(".row").each(function() {
         $(this).removeClass("future");
         $(this).addClass("past");
     }
+});
+
+//Save value to local storage
+$(".saveBtn").click(function(event) {
+    event.preventDefault();
+    var value = $(this).siblings(".time-block").val();
+    var time = $(this).parent().attr("id");
+    localStorage.setItem(time, value);
 });
