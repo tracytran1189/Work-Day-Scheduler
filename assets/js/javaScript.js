@@ -3,8 +3,13 @@
 $(document).ready(function() {
     var todaySchedule = moment().format("MMM Do YYYY");
     var displayDate = document.getElementById("currentDay");
-    var currentHour = moment().format("HH");
+    var currentHour = moment().hour();
+    console.log('currentHour', currentHour);
     displayDate.innerHTML = todaySchedule;
+
+    for (var i = 9; i < 18 ; i++) {
+        createTimeBlock(i);
+    }
 
     //Save value and time to local storage
     $(".saveBtn").click(function(event) {
@@ -16,39 +21,34 @@ $(document).ready(function() {
 
     //Compare each time slot to current time 
     $(".time-block").each(function() {
-        var timeSlot = $(this).attr("id").split("-")[1];
+        var hour = $(this).attr("data-hour");
 
-        if (currentHour == timeSlot) {
+        if (currentHour == hour) {
             $(this).addClass("present");
-            // $(this).children(".description");
-
-        } else if (currentHour < timeSlot) {
-            $(this).removeClass("present");
+        } else if (currentHour < hour) {
             $(this).addClass("future");
-        } else if (currentHour > timeSlot) {
-            $(this).removeClass("future");
+        } else if (currentHour > hour) {
             $(this).addClass("past");
         }
     });
 
     //get items from local storage.
 
-    var time09 = $("#time-09 .description");
-    time09.val(localStorage.getItem("time-09"));
-    var time10 = $("#time-10 .description");
-    time10.val(localStorage.getItem("time-10"));
-    var time11 = $("#time-11 .description");
-    time11.val(localStorage.getItem("time-11"));
-    var time12 = $("#time-12 .description");
-    time12.val(localStorage.getItem("time-12"));
-    var time13 = $("#time-13 .description");
-    time13.val(localStorage.getItem("time-13"));
-    var time14 = $("#time-14 .description");
-    time14.val(localStorage.getItem("time-14"));
-    var time15 = $("#time-15 .description");
-    time15.val(localStorage.getItem("time-15"));
-    var time16 = $("#time-16 .description");
-    time16.val(localStorage.getItem("time-16"));
-    var time17 = $("#time-17 .description");
-    time17.val(localStorage.getItem("time-17"));
+    $('.time-block').each((key, value) => {
+        var id = $(value).attr('id');
+        $(`#${id} .description`).val(localStorage.getItem(id));
+    });
 });
+
+function createTimeBlock(hour) {
+    var hourMoment = moment().hour(hour).minute(0).second(0).millisecond(0);
+    var blockElement = 
+        `
+            <div id="time-${hourMoment.format('HH')}" class="row time-block" data-hour=${hour}>
+                <div class="col-md-1 hour"><span id="${hourMoment.format('HH')}">${hourMoment.format('hA')}</span></div>
+                <textarea class="col-md-10 description"></textarea>
+                <button class="col-md-1 saveBtn"><i class="fa fa-save"></i></button>
+            </div>
+        `
+    $('.container').append(blockElement);
+}
