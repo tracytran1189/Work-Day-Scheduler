@@ -1,0 +1,1 @@
+var currentTime = { text: moment().format("h:00 A"), hour: moment().hour() };
