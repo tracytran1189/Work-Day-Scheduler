@@ -18,4 +18,4 @@ Current date is displayed on top of the page.
 ## **Website** :
 https://tracytran1189.github.io/Work-Day-Scheduler/
 
-![alt text](assets/image/website.jpg)
+![alt-text](assets/Image/website.jpg)
