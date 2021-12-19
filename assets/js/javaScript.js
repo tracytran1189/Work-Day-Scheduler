@@ -34,13 +34,22 @@ $(document).ready(function() {
 
     //get items from local storage.
 
-    $("#time09.time-block").val(localStorage.getItem("09"));
-    $("#time10.time-block").val(localStorage.getItem("10"));
-    $("#time11.time-block").val(localStorage.getItem("11"));
-    $("#time12.time-block").val(localStorage.getItem("12"));
-    $("#time13.time-block").val(localStorage.getItem("13"));
-    $("#time14.time-block").val(localStorage.getItem("14"));
-    $("#time15.time-block").val(localStorage.getItem("15"));
-    $("#time16.time-block").val(localStorage.getItem("16"));
-    $("#time17.time-block").val(localStorage.getItem("17"));
+    var time09 = $("#time-09 .time-block");
+    time09.val(localStorage.getItem("time-09"));
+    var time10 = $("#time-10 .time-block");
+    time10.val(localStorage.getItem("time-10"));
+    var time11 = $("#time-11 .time-block");
+    time11.val(localStorage.getItem("time-11"));
+    var time12 = $("#time-12 .time-block");
+    time12.val(localStorage.getItem("time-12"));
+    var time13 = $("#time-13 .time-block");
+    time13.val(localStorage.getItem("time-13"));
+    var time14 = $("#time-14 .time-block");
+    time14.val(localStorage.getItem("time-14"));
+    var time15 = $("#time-15 .time-block");
+    time15.val(localStorage.getItem("time-15"));
+    var time16 = $("#time-16 .time-block");
+    time16.val(localStorage.getItem("time-16"));
+    var time17 = $("#time-17 .time-block");
+    time17.val(localStorage.getItem("time-17"));
 });

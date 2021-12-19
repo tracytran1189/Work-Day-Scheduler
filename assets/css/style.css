@@ -15,10 +15,15 @@ textarea {
 
 .jumbotron {
     text-align: center;
-    background-color: transparent;
+    background-image: url("../Image/background.jpg");
+    background-size: cover;
     color: black;
     border-radius: 0;
     border-bottom: 10px solid black;
+}
+
+.lead {
+    font-size: 30px;
 }
 
 .description {
@@ -27,7 +32,6 @@ textarea {
 
 .time-block {
     text-align: center;
-    border-radius: 15px;
 }
 
 .row {
@@ -38,9 +42,11 @@ textarea {
 }
 
 .hour {
-    background-color: #ffffff;
+    background-image: linear-gradient(to left, rgb(212, 188, 193), rgb(211, 157, 211));
     color: #000000;
     border-top: 1px dashed #000000;
+    text-align: center;
+    font-weight: bold;
 }
 
 .past {
@@ -59,10 +65,7 @@ textarea {
 }
 
 .saveBtn {
-    border-left: 1px solid black;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: #06AED5;
+    background-image: linear-gradient(to right, rgb(212, 188, 193), rgb(211, 157, 211));
     color: white;
 }
 
